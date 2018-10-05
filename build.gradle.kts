@@ -10,6 +10,7 @@ repositories {
 }
 
 dependencies {
+    compile("com.warrenstrange:googleauth:1.1.2")
     testCompile("junit", "junit", "4.12")
 }
 
