@@ -1,8 +1,5 @@
 package magiclink;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,28 +14,18 @@ class MagicLinkService {
   }
 
   void sendMailWithMagicLink(String email) {
-    String token = generateRandomToken();
+    // TODO implement
 
-    // define time limit
-    Instant validUntil = Instant.now().plus(10, ChronoUnit.MINUTES);
-
-    MagicLink magicLink = new MagicLink(email, token, validUntil);
-    repository.save(magicLink);
-
-    mailer.sendMagicLinkEmail(email, token);
+    mailer.sendMagicLinkEmail(email, "some-token");
   }
 
-  private String generateRandomToken() {
-    return UUID.randomUUID().toString();
-  }
-
+  /**
+   * @return validated email address
+   * @throws RuntimeException if token is not valid
+   */
   String verify(String token) {
-    MagicLink magicLink = repository.findByToken(token)
-        .orElseThrow(() -> new RuntimeException("Could not find token"));
-    if (Instant.now().isAfter(magicLink.getValidUntil())) {
-      throw new RuntimeException("Token expired");
-    }
-    return magicLink.getUsername();
+    // TODO implement
+    return null;
   }
 
 }
