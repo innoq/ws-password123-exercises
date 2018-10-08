@@ -24,7 +24,7 @@ public class Mailer {
   }
 
   private void sendEmail(String recipient, String subject, String body) {
-    Email from = new Email("MagicLink");
+    Email from = new Email("test@localhost.intern");
     Email to = new Email(recipient);
     Content content = new Content("text/plain", body);
     Mail mail = new Mail(from, subject, to, content);
